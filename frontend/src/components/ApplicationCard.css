@@ -1,0 +1,62 @@
+.stub {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  background: var(--paper);
+  border: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.15s ease;
+}
+
+.stub:hover {
+  transform: translateX(2px);
+}
+
+.stub__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+}
+
+.stub__id {
+  color: var(--text-on-paper-dim);
+  font-size: 12px;
+}
+
+.stub__role {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-on-paper);
+}
+
+.stub__company {
+  color: var(--text-on-paper-dim);
+  font-size: 13px;
+}
+
+.stub__perforation {
+  width: 0;
+  border-left: 2px dashed var(--paper-dim);
+}
+
+.stub__status {
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.stub__status--drafted { color: var(--text-on-paper-dim); }
+.stub__status--sent { color: #5C6B47; }
+.stub__status--interview { color: var(--gold); background: rgba(200, 155, 60, 0.1); }
+.stub__status--offer { color: var(--moss); background: rgba(76, 107, 79, 0.12); }
+.stub__status--rejected { color: var(--rust); background: rgba(181, 80, 45, 0.1); }

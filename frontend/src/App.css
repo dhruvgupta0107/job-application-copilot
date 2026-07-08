@@ -1,0 +1,45 @@
+.app-shell {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ink-line);
+  margin-bottom: 40px;
+}
+
+.app-mark {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+
+.app-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.app-nav__item {
+  background: transparent;
+  border: none;
+  color: var(--text-on-ink-dim);
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.app-nav__item:hover {
+  color: var(--text-on-ink);
+}
+
+.app-nav__item--active {
+  color: var(--ink);
+  background: var(--paper);
+}

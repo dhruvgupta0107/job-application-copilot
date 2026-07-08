@@ -1,0 +1,37 @@
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 420px;
+}
+
+.upload-form input[type="file"] {
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+
+.upload-result {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ink-line);
+}
+
+.upload-preview {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.upload-preview li {
+  font-size: 12px;
+  color: var(--text-on-ink-dim);
+}
+
+.upload-error {
+  color: var(--rust);
+  margin-top: 20px;
+  font-size: 13px;
+}
