@@ -27,6 +27,12 @@ class Settings(BaseSettings):
     # "Inference Providers" support on its model page.
     chat_model: str = "meta-llama/Llama-3.1-8B-Instruct"
 
+    # Comma-separated list of allowed frontend origins for CORS, e.g.
+    # "https://job-copilot.vercel.app,http://localhost:5173"
+    # Defaults to "*" (allow all) for local dev - tighten this before
+    # deploying publicly.
+    cors_origins: str = "*"
+
     # How many resume chunks to retrieve per query
     retrieval_top_k: int = 5
 

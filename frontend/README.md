@@ -34,6 +34,19 @@ or WebSocket progress updates to the backend, swap the timer logic in
 `SubmitApplication.jsx` for real per-stage events - the `ChainProgress`
 component itself doesn't need to change, it just takes a `statuses` object.
 
+## Deploying (Vercel)
+
+1. Push this folder to GitHub (own repo, or a subfolder of a repo)
+2. In Vercel: New Project → import the repo → if it's a subfolder, set
+   "Root Directory" to `job-copilot-frontend` in project settings
+3. Add environment variable `VITE_API_URL` = your deployed backend URL
+   (e.g. `https://job-copilot-backend.onrender.com`)
+4. Deploy - Vercel auto-detects Vite, no extra config needed
+
+After deploying, go back to the backend's `CORS_ORIGINS` env var and add
+this Vercel URL, then redeploy the backend - otherwise the browser will
+block requests from the deployed frontend to the deployed backend.
+
 ## Design
 
 - Ink navy background, parchment card surfaces, gold/rust/moss accent colors

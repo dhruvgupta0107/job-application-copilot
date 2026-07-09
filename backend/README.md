@@ -176,6 +176,41 @@ build from source without Postgres dev headers (`pg_config`) installed.
 `postgresql+psycopg://` (not plain `postgresql://`) to tell SQLAlchemy to use
 this driver.
 
+## Deploying
+
+**Backend → Render** (free tier works):
+1. Push this `job-copilot` folder to a GitHub repo (or a subfolder of one)
+2. In Render: New → Web Service → connect the repo. If using `render.yaml`
+   (included), Render will pick up the build/start commands automatically -
+   otherwise set manually:
+   - Build command: `pip install -r requirements.txt`
+   - Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+3. Add environment variables in Render's dashboard: `DATABASE_URL`,
+   `GOOGLE_API_KEY`, `HUGGINGFACEHUB_API_TOKEN`, and `CORS_ORIGINS` (set
+   this to your deployed frontend's URL once you have it, e.g.
+   `https://job-copilot.vercel.app` - comma-separate multiple origins)
+4. Deploy. Render gives you a URL like `https://job-copilot-backend.onrender.com`
+
+**Database → Neon** (already covered above) - use the **pooled** connection
+string for a deployed backend, same as local.
+
+**Frontend → Vercel:**
+1. Push `job-copilot-frontend` to GitHub (can be the same repo, different
+   subfolder, or a separate repo)
+2. In Vercel: New Project → import the repo → set root directory to
+   `job-copilot-frontend` if it's a subfolder
+3. Add environment variable `VITE_API_URL` = your Render backend URL from
+   above
+4. Deploy. Vercel auto-detects Vite and handles build/output settings
+
+**After both are deployed:** go back to Render and update `CORS_ORIGINS` to
+your actual Vercel URL (it won't be known until after the frontend deploy),
+then redeploy the backend so CORS allows it.
+
+Note: Render's free tier spins down after inactivity - the first request
+after idling can take 30-60s to wake up. Fine for a personal project, worth
+knowing before a live demo.
+
 ## Next steps (not yet built)
 
 - Company research chain (optional web search enrichment before outreach drafting)
